@@ -5,7 +5,7 @@ import requests
 from time import sleep 
 import time 
 import schedule 
-import smtplib  
+import smtplib
   
 # Email id for who want to check availability 
 receiver_email_id = "mayanjun0110@gmail.com"
@@ -66,7 +66,7 @@ def sendemail(url):
   
   
 def ReadAsin(): 
-    url = "https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6"
+    url = "http://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6"
     print ("Processing: "+url) 
     ans = check(url) 
     arr = "Sold out online."
