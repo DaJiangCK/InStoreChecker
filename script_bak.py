@@ -27,19 +27,21 @@ def check(url):
         doc = html.fromstring(page.content) 
           
         # checking availaility 
-        XPATH_AVAILABILITY = '//div[@id ="availability"]//text()'
+        XPATH_AVAILABILITY = '//div[@id ="purchase-attributes-size-notification-error"]//text()'
         RAw_AVAILABILITY = doc.xpath(XPATH_AVAILABILITY) 
         AVAILABILITY = ''.join(RAw_AVAILABILITY).strip() if RAw_AVAILABILITY else None
         return AVAILABILITY 
   
       
-def sendemail(ans, product): 
-    GMAIL_USERNAME = os.environ['G_USERNAME']
-    GMAIL_PASSWORD = os.environ['G_PASSWD']
+def sendemail(url): 
+    # GMAIL_USERNAME = os.environ['G_USERNAME']
+    # GMAIL_PASSWORD = os.environ['G_PASSWD']
+    GMAIL_USERNAME = "mayanjun0110@gmail.com"
+    GMAIL_PASSWORD = "yan1jun10"
       
     recipient = receiver_email_id 
-    body_of_email = ans 
-    email_subject = product + ' product availability'
+    body_of_email = url 
+    email_subject = 'Lululemo product availability'
       
     # creates SMTP session  
     s = smtplib.SMTP('smtp.gmail.com', 587)  
@@ -63,21 +65,15 @@ def sendemail(ans, product):
   
   
 def ReadAsin(): 
-    # Asin Id is the product Id which  
-    # needs to be provided by the user 
-    Asin = 'B077PWK5BT' 
-    url = "http://www.amazon.in/dp/" + Asin 
+    url = "https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6"
     print ("Processing: "+url) 
     ans = check(url) 
-    arr = [ 
-        'Only 1 left in stock.', 
-        'Only 2 left in stock.', 
-        'In stock.'] 
-    print(ans) 
-    if ans in arr: 
+    arr = "Sold out online."
+    print(ans)
+    if ans != arr:
         # sending email to user if  
         # in case product available  
-        sendemail(ans, Asin)  
+        sendemail(url)  
   
 # scheduling same code to run multiple 
 # times after every 1 minute  

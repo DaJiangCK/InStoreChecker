@@ -6,12 +6,11 @@ import os
 item_urls = ['https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6', 'https://shop.lululemon.com/p/sale/Back-In-Action-Ls-MD/_/prod8970067?color=27574&sz=4']
 to_email = 'mayanjun0110@gmail.com'
 key_word = "Sold out online"
+headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'} 
 
 while len(item_urls):
     print(item_urls)
-    page = requests.get(item_urls[0])
-    print(page.url)
-    pages = [requests.get(item_url) for item_url in item_urls]
+    pages = [requests.get(item_url, headers = headers) for item_url in item_urls]
     for page in pages:
         tree = fromstring(page.content)
         item_name = tree.findtext('.//title')
