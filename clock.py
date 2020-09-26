@@ -7,12 +7,13 @@ import os
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 sched = BlockingScheduler()
-item_urls = ['https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6', 'https://shop.lululemon.com/p/sale/Back-In-Action-Ls-MD/_/prod8970067?color=27574&sz=4']
-to_email = 'mayanjun0110@gmail.com'
-key_word = "Sold out online"
 
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
+    item_urls = ['https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6', 'https://shop.lululemon.com/p/sale/Back-In-Action-Ls-MD/_/prod8970067?color=27574&sz=4']
+    to_email = 'mayanjun0110@gmail.com'
+    key_word = "Sold out online"
+
     pages = [requests.get(item_url) for item_url in item_urls]
     for page in pages:
         tree = fromstring(page.content)
