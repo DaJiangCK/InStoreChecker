@@ -18,7 +18,7 @@ while len(item_urls):
         if key_word not in page.text:
             s = smtplib.SMTP('smtp.gmail.com', 587)
             s.starttls()
-            s.login('mayanjun0110@gmail.com', 'yan1jun10')
+            s.login(os.environ['G_USERNAME'], os.environ['G_PASSWD'])
             message = 'Subject: Your item {} is in store\n\n{}'.format(item_name, page.url)
             s.sendmail("sender_email_id", to_email, message)
             s.quit()
