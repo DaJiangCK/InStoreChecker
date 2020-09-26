@@ -16,20 +16,23 @@ def check(url):
       
     # adding headers to show that you are 
     # a browser who is sending GET request 
+    print("getting the page")
     page = requests.get(url, headers = headers)  
+    print("got the page")
     for i in range(20): 
         # because continuous checks in  
         # milliseconds or few seconds 
         # blocks your request 
         sleep(3)
-          
+        print("getting the doc")
         # parsing the html content 
-        doc = html.fromstring(page.content) 
-          
+        doc = html.fromstring(page.content)
+        print("got the doc")
         # checking availaility 
         XPATH_AVAILABILITY = '//div[@id ="purchase-attributes-size-notification-error"]//text()'
         RAw_AVAILABILITY = doc.xpath(XPATH_AVAILABILITY) 
         AVAILABILITY = ''.join(RAw_AVAILABILITY).strip() if RAw_AVAILABILITY else None
+        print("got the AVAILABILITY")
         return AVAILABILITY 
   
       
