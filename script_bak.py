@@ -34,10 +34,8 @@ def check(url):
   
       
 def sendemail(url): 
-    # GMAIL_USERNAME = os.environ['G_USERNAME']
-    # GMAIL_PASSWORD = os.environ['G_PASSWD']
-    GMAIL_USERNAME = "mayanjun0110@gmail.com"
-    GMAIL_PASSWORD = "yan1jun10"
+    GMAIL_USERNAME = os.environ['G_USERNAME']
+    GMAIL_PASSWORD = os.environ['G_PASSWD']
       
     recipient = receiver_email_id 
     body_of_email = url 
