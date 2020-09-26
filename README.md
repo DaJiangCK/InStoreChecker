@@ -7,4 +7,4 @@
   5. heroku config:set G_PASSWD=your passwd
   6. heroku buildpacks:set heroku/python
   7. push heroku master
-  8. heroku ps:scale clock=1
+  8. heroku ps:scale worker=1
