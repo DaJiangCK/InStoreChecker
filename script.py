@@ -1,19 +1,12 @@
 import requests
-import time
 import smtplib
 from lxml.html import fromstring
-from flask import Flask, request, jsonify
 import os
-from apscheduler.schedulers.blocking import BlockingScheduler
+item_urls = ['https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6', 'https://shop.lululemon.com/p/sale/Back-In-Action-Ls-MD/_/prod8970067?color=27574&sz=4']
+to_email = 'mayanjun0110@gmail.com'
+key_word = "Sold out online"
 
-sched = BlockingScheduler()
-
-@sched.scheduled_job('interval', minutes=1)
-def timed_job():
-    item_urls = ['https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6', 'https://shop.lululemon.com/p/sale/Back-In-Action-Ls-MD/_/prod8970067?color=27574&sz=4']
-    to_email = 'mayanjun0110@gmail.com'
-    key_word = "Sold out online"
-
+while len(item_urls):
     pages = [requests.get(item_url) for item_url in item_urls]
     for page in pages:
         tree = fromstring(page.content)
@@ -29,5 +22,4 @@ def timed_job():
             print('Item {} is in store!'.format(item_name))
         else:
             print('Item {} is sold out'.format(item_name))
-
-sched.start()
+    time.sleep(60)
