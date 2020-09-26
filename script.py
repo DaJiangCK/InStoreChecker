@@ -9,7 +9,7 @@ key_word = "Sold out online"
 
 while len(item_urls):
     print(item_urls)
-    page = requests.get(item_url[0])
+    page = requests.get(item_urls[0])
     print(page.url)
     pages = [requests.get(item_url) for item_url in item_urls]
     for page in pages:
