@@ -8,6 +8,7 @@ to_email = 'mayanjun0110@gmail.com'
 key_word = "Sold out online"
 
 while len(item_urls):
+    print(item_urls)
     pages = [requests.get(item_url) for item_url in item_urls]
     for page in pages:
         tree = fromstring(page.content)
