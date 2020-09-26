@@ -17,7 +17,9 @@ def check(url):
     # adding headers to show that you are 
     # a browser who is sending GET request 
     print("getting the page")
-    page = requests.get(url, headers = headers)  
+    page = requests.get(url, headers = headers, stream=True)
+    for resp in page.history:
+        print(resp.status_code, resp.url)
     print("got the page")
     for i in range(20): 
         # because continuous checks in  
@@ -66,7 +68,7 @@ def sendemail(url):
   
   
 def ReadAsin(): 
-    url = "http://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6"
+    url = "https://shop.lululemon.com/p/sale/Define-Jacket-MD/_/prod8240254?color=37121&sz=6"
     print ("Processing: "+url) 
     ans = check(url) 
     arr = "Sold out online."
