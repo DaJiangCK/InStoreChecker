@@ -9,6 +9,8 @@ key_word = "Sold out online"
 
 while len(item_urls):
     print(item_urls)
+    page = requests.get(item_url[0])
+    print(page.url)
     pages = [requests.get(item_url) for item_url in item_urls]
     for page in pages:
         tree = fromstring(page.content)
@@ -16,7 +18,7 @@ while len(item_urls):
         if key_word not in page.text:
             s = smtplib.SMTP('smtp.gmail.com', 587)
             s.starttls()
-            s.login(os.environ['G_USERNAME'], os.environ['G_PASSWD'])
+            s.login('mayanjun0110@gmail.com', 'yan1jun10')
             message = 'Subject: Your item {} is in store\n\n{}'.format(item_name, page.url)
             s.sendmail("sender_email_id", to_email, message)
             s.quit()
