@@ -90,7 +90,7 @@ def job():
     readUrlsFromFile()
 
 
-schedule.every(6).hours.do(job)
+schedule.every(1).minutes.do(job)
 
 while True:
 
