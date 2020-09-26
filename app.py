@@ -58,7 +58,6 @@ def post_something():
 @app.route('/')
 def index():
     checkInvetory()
-    return "<h1>Checking list is empty !!</h1>"
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
