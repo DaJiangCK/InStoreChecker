@@ -12,7 +12,7 @@ receiver_email_id = "mayanjun0110@gmail.com"
   
   
 def check(url): 
-    headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'} 
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'} 
       
     # adding headers to show that you are 
     # a browser who is sending GET request 
@@ -21,7 +21,7 @@ def check(url):
         # because continuous checks in  
         # milliseconds or few seconds 
         # blocks your request 
-        sleep(3)  
+        sleep(3)
           
         # parsing the html content 
         doc = html.fromstring(page.content) 
