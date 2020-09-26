@@ -1,4 +1,5 @@
 import requests
+import time
 import smtplib
 from lxml.html import fromstring
 import os
